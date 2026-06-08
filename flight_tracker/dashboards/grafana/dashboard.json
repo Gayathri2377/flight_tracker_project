@@ -1,0 +1,90 @@
+{
+  "title": "Real-Time Flight Tracker",
+  "uid": "flight-tracker-main",
+  "refresh": "30s",
+  "time": { "from": "now-3h", "to": "now" },
+  "panels": [
+    {
+      "id": 1, "type": "stat", "title": "Active Flights",
+      "gridPos": {"x":0,"y":0,"w":4,"h":4},
+      "targets": [{
+        "rawSql": "SELECT kpi_value FROM flight_kpis WHERE kpi_name='active_flights'",
+        "format": "table"
+      }]
+    },
+    {
+      "id": 2, "type": "stat", "title": "Avg Altitude (ft)",
+      "gridPos": {"x":4,"y":0,"w":4,"h":4},
+      "targets": [{
+        "rawSql": "SELECT ROUND(kpi_value,0) FROM flight_kpis WHERE kpi_name='avg_altitude_ft'",
+        "format": "table"
+      }]
+    },
+    {
+      "id": 3, "type": "stat", "title": "Avg Speed (knots)",
+      "gridPos": {"x":8,"y":0,"w":4,"h":4},
+      "targets": [{
+        "rawSql": "SELECT ROUND(kpi_value,0) FROM flight_kpis WHERE kpi_name='avg_speed_knots'",
+        "format": "table"
+      }]
+    },
+    {
+      "id": 4, "type": "stat", "title": "Emergency Squawks",
+      "gridPos": {"x":12,"y":0,"w":4,"h":4},
+      "fieldConfig": {"defaults":{"color":{"mode":"thresholds"},"thresholds":{"steps":[{"color":"green","value":0},{"color":"red","value":1}]}}},
+      "targets": [{
+        "rawSql": "SELECT kpi_value FROM flight_kpis WHERE kpi_name='emergency_count'",
+        "format": "table"
+      }]
+    },
+    {
+      "id": 5, "type": "timeseries", "title": "Flights Over Time",
+      "gridPos": {"x":0,"y":4,"w":12,"h":8},
+      "targets": [{
+        "rawSql": "SELECT hour_bucket AS time, flight_count, region FROM hourly_flight_trend ORDER BY hour_bucket",
+        "format": "table"
+      }]
+    },
+    {
+      "id": 6, "type": "timeseries", "title": "Average Altitude & Speed",
+      "gridPos": {"x":12,"y":4,"w":12,"h":8},
+      "targets": [{
+        "rawSql": "SELECT hour_bucket AS time, avg_altitude_ft, avg_speed_knots FROM hourly_flight_trend ORDER BY hour_bucket",
+        "format": "table"
+      }]
+    },
+    {
+      "id": 7, "type": "piechart", "title": "Flights by Region",
+      "gridPos": {"x":0,"y":12,"w":6,"h":8},
+      "targets": [{
+        "rawSql": "SELECT region_label AS region, total_flights FROM region_summary ORDER BY total_flights DESC",
+        "format": "table"
+      }]
+    },
+    {
+      "id": 8, "type": "bargauge", "title": "Top Operators",
+      "gridPos": {"x":6,"y":12,"w":6,"h":8},
+      "targets": [{
+        "rawSql": "SELECT operator, flight_count FROM top_operators ORDER BY rank LIMIT 10",
+        "format": "table"
+      }]
+    },
+    {
+      "id": 9, "type": "table", "title": "Active Flights",
+      "gridPos": {"x":0,"y":20,"w":24,"h":10},
+      "targets": [{
+        "rawSql": "SELECT hex, flight, registration, aircraft_type, ROUND(lat,4) AS lat, ROUND(lon,4) AS lon, altitude_ft, ROUND(gs_knots,0) AS speed_kts, track_deg, on_ground, emergency, region FROM flight_current ORDER BY last_seen DESC LIMIT 100",
+        "format": "table"
+      }]
+    },
+    {
+      "id": 10, "type": "table", "title": "Emergency Alerts",
+      "gridPos": {"x":0,"y":30,"w":24,"h":6},
+      "fieldConfig": {"defaults":{"color":{"mode":"thresholds"},"thresholds":{"steps":[{"color":"red","value":0}]}}},
+      "targets": [{
+        "rawSql": "SELECT hex, flight, squawk, emergency, lat, lon, altitude_ft, region, last_seen FROM flight_current WHERE is_emergency = true ORDER BY last_seen DESC",
+        "format": "table"
+      }]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+api:
+  base_url: "https://api.adsb.lol/v2"
+  timeout: 15
+  retry_attempts: 3
+  retry_delay: 5
+  poll_interval: 60  # seconds
+
+regions:
+  hyderabad:
+    lat: 17.38
+    lon: 78.48
+    dist_nm: 250
+    label: "Hyderabad"
+  delhi:
+    lat: 28.61
+    lon: 77.20
+    dist_nm: 250
+    label: "Delhi"
+  mumbai:
+    lat: 19.08
+    lon: 72.88
+    dist_nm: 250
+    label: "Mumbai"
+  bangalore:
+    lat: 12.97
+    lon: 77.59
+    dist_nm: 250
+    label: "Bangalore"
+
+paths:
+  raw_data: "data/raw"
+  bronze: "data/bronze"
+  silver: "data/silver"
+  gold: "data/gold"
+  duckdb: "data/warehouse/flights.duckdb"
+  logs: "logs"
+
+bronze:
+  max_file_age_days: 30
+
+silver:
+  invalid_alt_min: -500
+  invalid_alt_max: 60000
+  invalid_speed_min: 0
+  invalid_speed_max: 1500
+  invalid_lat_min: -90
+  invalid_lat_max: 90
+  invalid_lon_min: -180
+  invalid_lon_max: 180
+
+api_server:
+  host: "0.0.0.0"
+  port: 8000
+
+grafana:
+  port: 3000
+
+logging:
+  level: "INFO"
+  rotation: "1 day"
+  retention: "7 days"

@@ -1,0 +1,896 @@
+2026-06-08 12:37:56 | INFO | __main__ | Continuous pipeline — interval=60s
+2026-06-08 12:37:56 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 1
+════════════════════════════════════════
+2026-06-08 12:37:56 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 12:37:56 | INFO | __main__ | Pipeline started at 2026-06-08T07:07:56.029551+00:00
+2026-06-08 12:37:56 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 12:37:57 | INFO | ingestion.ingest | [hyderabad] Fetched 32 aircraft
+2026-06-08 12:37:57 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_070757.json
+2026-06-08 12:37:58 | INFO | ingestion.ingest | [delhi] Fetched 14 aircraft
+2026-06-08 12:37:58 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_070758.json
+2026-06-08 12:37:58 | INFO | ingestion.ingest | [mumbai] Fetched 38 aircraft
+2026-06-08 12:37:58 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_070758.json
+2026-06-08 12:37:59 | INFO | ingestion.ingest | [bangalore] Fetched 33 aircraft
+2026-06-08 12:37:59 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_070759.json
+2026-06-08 12:37:59 | INFO | __main__ | Ingested: {'hyderabad': 32, 'delhi': 14, 'mumbai': 38, 'bangalore': 33}
+2026-06-08 12:37:59 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 12:37:59 | INFO | bronze.load_bronze | Found 4 raw files to process
+2026-06-08 12:37:59 | INFO | bronze.load_bronze | Loaded    33 rows ← bangalore_20260608_070759.json
+2026-06-08 12:37:59 | INFO | bronze.load_bronze | Loaded    14 rows ← delhi_20260608_070758.json
+2026-06-08 12:37:59 | INFO | bronze.load_bronze | Loaded    32 rows ← hyderabad_20260608_070757.json
+2026-06-08 12:37:59 | INFO | bronze.load_bronze | Loaded    38 rows ← mumbai_20260608_070758.json
+2026-06-08 12:37:59 | INFO | bronze.load_bronze | Bronze load complete | 117 total rows inserted
+2026-06-08 12:37:59 | INFO | __main__ | Bronze rows: 117
+2026-06-08 12:37:59 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 12:37:59 | INFO | silver.process_silver | flight_clean: 117 rows (was 0)
+2026-06-08 12:37:59 | INFO | silver.process_silver | CDC: 98 new, 0 changed, 0 unchanged
+2026-06-08 12:37:59 | INFO | silver.process_silver | SCD2: 98 new rows | 0 records closed | flight_current has 98 rows
+2026-06-08 12:37:59 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 12:37:59 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 12:37:59 | INFO | gold.build_gold | aircraft_dimension: 98 rows
+2026-06-08 12:37:59 | INFO | gold.build_gold | airline_dimension: 22 rows
+2026-06-08 12:38:00 | INFO | gold.build_gold | flight_metrics: 4 rows
+2026-06-08 12:38:00 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 12:38:00 | INFO | gold.build_gold |   Active Flights            = 98
+2026-06-08 12:38:00 | INFO | gold.build_gold |   Avg Altitude (ft)         = 25558.0
+2026-06-08 12:38:00 | INFO | gold.build_gold |   Avg Speed (knots)         = 393.0
+2026-06-08 12:38:00 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 12:38:00 | INFO | gold.build_gold |   Aircraft Types            = 18
+2026-06-08 12:38:00 | INFO | gold.build_gold |   Airlines                  = 22
+2026-06-08 12:38:00 | INFO | gold.build_gold |   On Ground                 = 0
+2026-06-08 12:38:00 | INFO | gold.build_gold |   Airborne                  = 98
+2026-06-08 12:38:00 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 12:38:00 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 12:38:00 | INFO | gold.build_gold | hourly_flight_trend: 4 rows
+2026-06-08 12:38:00 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 12:38:00 | INFO | __main__ | Pipeline complete in 4.2s
+2026-06-08 12:38:00 | INFO | __main__ | Cycle 1 ✓ — sleeping 60s
+2026-06-08 12:39:00 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 2
+════════════════════════════════════════
+2026-06-08 12:39:00 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 12:39:00 | INFO | __main__ | Pipeline started at 2026-06-08T07:09:00.181804+00:00
+2026-06-08 12:39:00 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 12:39:00 | INFO | ingestion.ingest | [hyderabad] Fetched 31 aircraft
+2026-06-08 12:39:00 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_070900.json
+2026-06-08 12:39:01 | INFO | ingestion.ingest | [delhi] Fetched 14 aircraft
+2026-06-08 12:39:01 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_070901.json
+2026-06-08 12:39:02 | INFO | ingestion.ingest | [mumbai] Fetched 36 aircraft
+2026-06-08 12:39:02 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_070902.json
+2026-06-08 12:39:03 | INFO | ingestion.ingest | [bangalore] Fetched 32 aircraft
+2026-06-08 12:39:03 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_070903.json
+2026-06-08 12:39:03 | INFO | __main__ | Ingested: {'hyderabad': 31, 'delhi': 14, 'mumbai': 36, 'bangalore': 32}
+2026-06-08 12:39:03 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 12:39:03 | INFO | bronze.load_bronze | Found 8 raw files to process
+2026-06-08 12:39:03 | INFO | bronze.load_bronze | Loaded    32 rows ← bangalore_20260608_070903.json
+2026-06-08 12:39:03 | INFO | bronze.load_bronze | Loaded    14 rows ← delhi_20260608_070901.json
+2026-06-08 12:39:03 | INFO | bronze.load_bronze | Loaded    31 rows ← hyderabad_20260608_070900.json
+2026-06-08 12:39:03 | INFO | bronze.load_bronze | Loaded    36 rows ← mumbai_20260608_070902.json
+2026-06-08 12:39:03 | INFO | bronze.load_bronze | Bronze load complete | 113 total rows inserted
+2026-06-08 12:39:03 | INFO | __main__ | Bronze rows: 113
+2026-06-08 12:39:03 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 12:39:03 | INFO | silver.process_silver | flight_clean: 230 rows (was 117)
+2026-06-08 12:39:03 | INFO | silver.process_silver | CDC: 4 new, 91 changed, 7 unchanged
+2026-06-08 12:39:03 | INFO | silver.process_silver | SCD2: 95 new rows | 91 records closed | flight_current has 102 rows
+2026-06-08 12:39:03 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 12:39:03 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 12:39:03 | INFO | gold.build_gold | aircraft_dimension: 102 rows
+2026-06-08 12:39:03 | INFO | gold.build_gold | airline_dimension: 22 rows
+2026-06-08 12:39:03 | INFO | gold.build_gold | flight_metrics: 8 rows
+2026-06-08 12:39:03 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 12:39:03 | INFO | gold.build_gold |   Active Flights            = 102
+2026-06-08 12:39:03 | INFO | gold.build_gold |   Avg Altitude (ft)         = 25676.0
+2026-06-08 12:39:03 | INFO | gold.build_gold |   Avg Speed (knots)         = 391.0
+2026-06-08 12:39:03 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 12:39:03 | INFO | gold.build_gold |   Aircraft Types            = 19
+2026-06-08 12:39:03 | INFO | gold.build_gold |   Airlines                  = 22
+2026-06-08 12:39:03 | INFO | gold.build_gold |   On Ground                 = 0
+2026-06-08 12:39:03 | INFO | gold.build_gold |   Airborne                  = 102
+2026-06-08 12:39:03 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 12:39:03 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 12:39:04 | INFO | gold.build_gold | hourly_flight_trend: 4 rows
+2026-06-08 12:39:04 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 12:39:04 | INFO | __main__ | Pipeline complete in 3.9s
+2026-06-08 12:39:04 | INFO | __main__ | Cycle 2 ✓ — sleeping 60s
+2026-06-08 12:40:04 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 3
+════════════════════════════════════════
+2026-06-08 12:40:04 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 12:40:04 | INFO | __main__ | Pipeline started at 2026-06-08T07:10:04.098187+00:00
+2026-06-08 12:40:04 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 12:40:04 | INFO | ingestion.ingest | [hyderabad] Fetched 30 aircraft
+2026-06-08 12:40:04 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_071004.json
+2026-06-08 12:40:05 | INFO | ingestion.ingest | [delhi] Fetched 14 aircraft
+2026-06-08 12:40:05 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_071005.json
+2026-06-08 12:40:06 | INFO | ingestion.ingest | [mumbai] Fetched 36 aircraft
+2026-06-08 12:40:06 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_071006.json
+2026-06-08 12:40:06 | INFO | ingestion.ingest | [bangalore] Fetched 31 aircraft
+2026-06-08 12:40:07 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_071006.json
+2026-06-08 12:40:07 | INFO | __main__ | Ingested: {'hyderabad': 30, 'delhi': 14, 'mumbai': 36, 'bangalore': 31}
+2026-06-08 12:40:07 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 12:40:07 | INFO | bronze.load_bronze | Found 12 raw files to process
+2026-06-08 12:40:07 | INFO | bronze.load_bronze | Loaded    31 rows ← bangalore_20260608_071006.json
+2026-06-08 12:40:07 | INFO | bronze.load_bronze | Loaded    14 rows ← delhi_20260608_071005.json
+2026-06-08 12:40:07 | INFO | bronze.load_bronze | Loaded    30 rows ← hyderabad_20260608_071004.json
+2026-06-08 12:40:07 | INFO | bronze.load_bronze | Loaded    36 rows ← mumbai_20260608_071006.json
+2026-06-08 12:40:07 | INFO | bronze.load_bronze | Bronze load complete | 111 total rows inserted
+2026-06-08 12:40:07 | INFO | __main__ | Bronze rows: 111
+2026-06-08 12:40:07 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 12:40:07 | INFO | silver.process_silver | flight_clean: 341 rows (was 230)
+2026-06-08 12:40:07 | INFO | silver.process_silver | CDC: 8 new, 86 changed, 16 unchanged
+2026-06-08 12:40:07 | INFO | silver.process_silver | SCD2: 94 new rows | 86 records closed | flight_current has 110 rows
+2026-06-08 12:40:07 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 12:40:07 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 12:40:07 | INFO | gold.build_gold | aircraft_dimension: 110 rows
+2026-06-08 12:40:07 | INFO | gold.build_gold | airline_dimension: 22 rows
+2026-06-08 12:40:07 | INFO | gold.build_gold | flight_metrics: 12 rows
+2026-06-08 12:40:07 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 12:40:07 | INFO | gold.build_gold |   Active Flights            = 110
+2026-06-08 12:40:07 | INFO | gold.build_gold |   Avg Altitude (ft)         = 24609.0
+2026-06-08 12:40:07 | INFO | gold.build_gold |   Avg Speed (knots)         = 379.0
+2026-06-08 12:40:07 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 12:40:07 | INFO | gold.build_gold |   Aircraft Types            = 19
+2026-06-08 12:40:07 | INFO | gold.build_gold |   Airlines                  = 22
+2026-06-08 12:40:07 | INFO | gold.build_gold |   On Ground                 = 2
+2026-06-08 12:40:07 | INFO | gold.build_gold |   Airborne                  = 108
+2026-06-08 12:40:07 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 12:40:07 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 12:40:07 | INFO | gold.build_gold | hourly_flight_trend: 4 rows
+2026-06-08 12:40:07 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 12:40:07 | INFO | __main__ | Pipeline complete in 3.5s
+2026-06-08 12:40:07 | INFO | __main__ | Cycle 3 ✓ — sleeping 60s
+2026-06-08 12:41:07 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 4
+════════════════════════════════════════
+2026-06-08 12:41:07 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 12:41:07 | INFO | __main__ | Pipeline started at 2026-06-08T07:11:07.646957+00:00
+2026-06-08 12:41:07 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 12:41:08 | INFO | ingestion.ingest | [hyderabad] Fetched 31 aircraft
+2026-06-08 12:41:08 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_071108.json
+2026-06-08 12:41:09 | INFO | ingestion.ingest | [delhi] Fetched 17 aircraft
+2026-06-08 12:41:09 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_071109.json
+2026-06-08 12:41:15 | INFO | ingestion.ingest | [mumbai] Fetched 38 aircraft
+2026-06-08 12:41:15 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_071115.json
+2026-06-08 12:41:15 | INFO | ingestion.ingest | [bangalore] Fetched 31 aircraft
+2026-06-08 12:41:15 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_071115.json
+2026-06-08 12:41:15 | INFO | __main__ | Ingested: {'hyderabad': 31, 'delhi': 17, 'mumbai': 38, 'bangalore': 31}
+2026-06-08 12:41:15 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 12:41:15 | INFO | bronze.load_bronze | Found 16 raw files to process
+2026-06-08 12:41:15 | INFO | bronze.load_bronze | Loaded    31 rows ← bangalore_20260608_071115.json
+2026-06-08 12:41:15 | INFO | bronze.load_bronze | Loaded    17 rows ← delhi_20260608_071109.json
+2026-06-08 12:41:15 | INFO | bronze.load_bronze | Loaded    31 rows ← hyderabad_20260608_071108.json
+2026-06-08 12:41:16 | INFO | bronze.load_bronze | Loaded    38 rows ← mumbai_20260608_071115.json
+2026-06-08 12:41:16 | INFO | bronze.load_bronze | Bronze load complete | 117 total rows inserted
+2026-06-08 12:41:16 | INFO | __main__ | Bronze rows: 117
+2026-06-08 12:41:16 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 12:41:16 | INFO | silver.process_silver | flight_clean: 458 rows (was 341)
+2026-06-08 12:41:16 | INFO | silver.process_silver | CDC: 8 new, 91 changed, 19 unchanged
+2026-06-08 12:41:16 | INFO | silver.process_silver | SCD2: 100 new rows | 92 records closed | flight_current has 118 rows
+2026-06-08 12:41:16 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 12:41:16 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 12:41:16 | INFO | gold.build_gold | aircraft_dimension: 118 rows
+2026-06-08 12:41:16 | INFO | gold.build_gold | airline_dimension: 24 rows
+2026-06-08 12:41:16 | INFO | gold.build_gold | flight_metrics: 16 rows
+2026-06-08 12:41:16 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 12:41:16 | INFO | gold.build_gold |   Active Flights            = 118
+2026-06-08 12:41:16 | INFO | gold.build_gold |   Avg Altitude (ft)         = 24685.0
+2026-06-08 12:41:16 | INFO | gold.build_gold |   Avg Speed (knots)         = 379.0
+2026-06-08 12:41:16 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 12:41:16 | INFO | gold.build_gold |   Aircraft Types            = 19
+2026-06-08 12:41:16 | INFO | gold.build_gold |   Airlines                  = 23
+2026-06-08 12:41:16 | INFO | gold.build_gold |   On Ground                 = 2
+2026-06-08 12:41:16 | INFO | gold.build_gold |   Airborne                  = 116
+2026-06-08 12:41:16 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 12:41:16 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 12:41:16 | INFO | gold.build_gold | hourly_flight_trend: 4 rows
+2026-06-08 12:41:16 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 12:41:16 | INFO | __main__ | Pipeline complete in 8.9s
+2026-06-08 12:41:16 | INFO | __main__ | Cycle 4 ✓ — sleeping 60s
+2026-06-08 12:42:16 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 5
+════════════════════════════════════════
+2026-06-08 12:42:16 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 12:42:16 | INFO | __main__ | Pipeline started at 2026-06-08T07:12:16.539694+00:00
+2026-06-08 12:42:16 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 12:42:17 | INFO | ingestion.ingest | [hyderabad] Fetched 37 aircraft
+2026-06-08 12:42:17 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_071217.json
+2026-06-08 12:42:18 | INFO | ingestion.ingest | [delhi] Fetched 14 aircraft
+2026-06-08 12:42:18 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_071218.json
+2026-06-08 12:42:18 | INFO | ingestion.ingest | [mumbai] Fetched 39 aircraft
+2026-06-08 12:42:18 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_071218.json
+2026-06-08 12:42:19 | INFO | ingestion.ingest | [bangalore] Fetched 32 aircraft
+2026-06-08 12:42:19 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_071219.json
+2026-06-08 12:42:19 | INFO | __main__ | Ingested: {'hyderabad': 37, 'delhi': 14, 'mumbai': 39, 'bangalore': 32}
+2026-06-08 12:42:19 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 12:42:19 | INFO | bronze.load_bronze | Found 20 raw files to process
+2026-06-08 12:42:19 | INFO | bronze.load_bronze | Loaded    32 rows ← bangalore_20260608_071219.json
+2026-06-08 12:42:19 | INFO | bronze.load_bronze | Loaded    14 rows ← delhi_20260608_071218.json
+2026-06-08 12:42:19 | INFO | bronze.load_bronze | Loaded    37 rows ← hyderabad_20260608_071217.json
+2026-06-08 12:42:19 | INFO | bronze.load_bronze | Loaded    39 rows ← mumbai_20260608_071218.json
+2026-06-08 12:42:19 | INFO | bronze.load_bronze | Bronze load complete | 122 total rows inserted
+2026-06-08 12:42:19 | INFO | __main__ | Bronze rows: 122
+2026-06-08 12:42:19 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 12:42:19 | INFO | silver.process_silver | flight_clean: 580 rows (was 458)
+2026-06-08 12:42:19 | INFO | silver.process_silver | CDC: 7 new, 97 changed, 21 unchanged
+2026-06-08 12:42:19 | INFO | silver.process_silver | SCD2: 104 new rows | 97 records closed | flight_current has 125 rows
+2026-06-08 12:42:19 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 12:42:19 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 12:42:19 | INFO | gold.build_gold | aircraft_dimension: 125 rows
+2026-06-08 12:42:20 | INFO | gold.build_gold | airline_dimension: 24 rows
+2026-06-08 12:42:20 | INFO | gold.build_gold | flight_metrics: 20 rows
+2026-06-08 12:42:20 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 12:42:20 | INFO | gold.build_gold |   Active Flights            = 125
+2026-06-08 12:42:20 | INFO | gold.build_gold |   Avg Altitude (ft)         = 24420.0
+2026-06-08 12:42:20 | INFO | gold.build_gold |   Avg Speed (knots)         = 375.0
+2026-06-08 12:42:20 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 12:42:20 | INFO | gold.build_gold |   Aircraft Types            = 19
+2026-06-08 12:42:20 | INFO | gold.build_gold |   Airlines                  = 24
+2026-06-08 12:42:20 | INFO | gold.build_gold |   On Ground                 = 3
+2026-06-08 12:42:20 | INFO | gold.build_gold |   Airborne                  = 122
+2026-06-08 12:42:20 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 12:42:20 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 12:42:20 | INFO | gold.build_gold | hourly_flight_trend: 4 rows
+2026-06-08 12:42:20 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 12:42:20 | INFO | __main__ | Pipeline complete in 3.6s
+2026-06-08 12:42:20 | INFO | __main__ | Cycle 5 ✓ — sleeping 60s
+2026-06-08 12:43:20 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 6
+════════════════════════════════════════
+2026-06-08 12:43:20 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 12:43:20 | INFO | __main__ | Pipeline started at 2026-06-08T07:13:20.165089+00:00
+2026-06-08 12:43:20 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 12:43:20 | INFO | ingestion.ingest | [hyderabad] Fetched 40 aircraft
+2026-06-08 12:43:20 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_071320.json
+2026-06-08 12:43:21 | INFO | ingestion.ingest | [delhi] Fetched 16 aircraft
+2026-06-08 12:43:21 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_071321.json
+2026-06-08 12:43:22 | INFO | ingestion.ingest | [mumbai] Fetched 38 aircraft
+2026-06-08 12:43:22 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_071322.json
+2026-06-08 12:43:23 | INFO | ingestion.ingest | [bangalore] Fetched 31 aircraft
+2026-06-08 12:43:23 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_071323.json
+2026-06-08 12:43:23 | INFO | __main__ | Ingested: {'hyderabad': 40, 'delhi': 16, 'mumbai': 38, 'bangalore': 31}
+2026-06-08 12:43:23 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 12:43:23 | INFO | bronze.load_bronze | Found 24 raw files to process
+2026-06-08 12:43:23 | INFO | bronze.load_bronze | Loaded    31 rows ← bangalore_20260608_071323.json
+2026-06-08 12:43:23 | INFO | bronze.load_bronze | Loaded    16 rows ← delhi_20260608_071321.json
+2026-06-08 12:43:23 | INFO | bronze.load_bronze | Loaded    40 rows ← hyderabad_20260608_071320.json
+2026-06-08 12:43:23 | INFO | bronze.load_bronze | Loaded    38 rows ← mumbai_20260608_071322.json
+2026-06-08 12:43:23 | INFO | bronze.load_bronze | Bronze load complete | 125 total rows inserted
+2026-06-08 12:43:23 | INFO | __main__ | Bronze rows: 125
+2026-06-08 12:43:23 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 12:43:23 | INFO | silver.process_silver | flight_clean: 705 rows (was 580)
+2026-06-08 12:43:23 | INFO | silver.process_silver | CDC: 6 new, 98 changed, 27 unchanged
+2026-06-08 12:43:23 | INFO | silver.process_silver | SCD2: 105 new rows | 99 records closed | flight_current has 131 rows
+2026-06-08 12:43:23 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 12:43:23 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 12:43:23 | INFO | gold.build_gold | aircraft_dimension: 131 rows
+2026-06-08 12:43:23 | INFO | gold.build_gold | airline_dimension: 24 rows
+2026-06-08 12:43:23 | INFO | gold.build_gold | flight_metrics: 24 rows
+2026-06-08 12:43:23 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 12:43:23 | INFO | gold.build_gold |   Active Flights            = 131
+2026-06-08 12:43:23 | INFO | gold.build_gold |   Avg Altitude (ft)         = 24410.0
+2026-06-08 12:43:23 | INFO | gold.build_gold |   Avg Speed (knots)         = 375.0
+2026-06-08 12:43:23 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 12:43:23 | INFO | gold.build_gold |   Aircraft Types            = 20
+2026-06-08 12:43:23 | INFO | gold.build_gold |   Airlines                  = 23
+2026-06-08 12:43:23 | INFO | gold.build_gold |   On Ground                 = 5
+2026-06-08 12:43:23 | INFO | gold.build_gold |   Airborne                  = 126
+2026-06-08 12:43:23 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 12:43:23 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 12:43:23 | INFO | gold.build_gold | hourly_flight_trend: 4 rows
+2026-06-08 12:43:23 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 12:43:23 | INFO | __main__ | Pipeline complete in 3.6s
+2026-06-08 12:43:23 | INFO | __main__ | Cycle 6 ✓ — sleeping 60s
+2026-06-08 12:44:23 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 7
+════════════════════════════════════════
+2026-06-08 12:44:23 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 12:44:23 | INFO | __main__ | Pipeline started at 2026-06-08T07:14:23.748692+00:00
+2026-06-08 12:44:23 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 12:44:24 | INFO | ingestion.ingest | [hyderabad] Fetched 40 aircraft
+2026-06-08 12:44:24 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_071424.json
+2026-06-08 12:44:25 | INFO | ingestion.ingest | [delhi] Fetched 13 aircraft
+2026-06-08 12:44:25 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_071425.json
+2026-06-08 12:44:26 | INFO | ingestion.ingest | [mumbai] Fetched 41 aircraft
+2026-06-08 12:44:26 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_071426.json
+2026-06-08 12:44:26 | INFO | ingestion.ingest | [bangalore] Fetched 29 aircraft
+2026-06-08 12:44:26 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_071426.json
+2026-06-08 12:44:26 | INFO | __main__ | Ingested: {'hyderabad': 40, 'delhi': 13, 'mumbai': 41, 'bangalore': 29}
+2026-06-08 12:44:26 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 12:44:26 | INFO | bronze.load_bronze | Found 28 raw files to process
+2026-06-08 12:44:26 | INFO | bronze.load_bronze | Loaded    29 rows ← bangalore_20260608_071426.json
+2026-06-08 12:44:27 | INFO | bronze.load_bronze | Loaded    13 rows ← delhi_20260608_071425.json
+2026-06-08 12:44:27 | INFO | bronze.load_bronze | Loaded    40 rows ← hyderabad_20260608_071424.json
+2026-06-08 12:44:27 | INFO | bronze.load_bronze | Loaded    41 rows ← mumbai_20260608_071426.json
+2026-06-08 12:44:27 | INFO | bronze.load_bronze | Bronze load complete | 123 total rows inserted
+2026-06-08 12:44:27 | INFO | __main__ | Bronze rows: 123
+2026-06-08 12:44:27 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 12:44:27 | INFO | silver.process_silver | flight_clean: 828 rows (was 705)
+2026-06-08 12:44:27 | INFO | silver.process_silver | CDC: 7 new, 97 changed, 34 unchanged
+2026-06-08 12:44:27 | INFO | silver.process_silver | SCD2: 104 new rows | 97 records closed | flight_current has 138 rows
+2026-06-08 12:44:27 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 12:44:27 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 12:44:27 | INFO | gold.build_gold | aircraft_dimension: 138 rows
+2026-06-08 12:44:27 | INFO | gold.build_gold | airline_dimension: 25 rows
+2026-06-08 12:44:27 | INFO | gold.build_gold | flight_metrics: 28 rows
+2026-06-08 12:44:27 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 12:44:27 | INFO | gold.build_gold |   Active Flights            = 138
+2026-06-08 12:44:27 | INFO | gold.build_gold |   Avg Altitude (ft)         = 24568.0
+2026-06-08 12:44:27 | INFO | gold.build_gold |   Avg Speed (knots)         = 377.0
+2026-06-08 12:44:27 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 12:44:27 | INFO | gold.build_gold |   Aircraft Types            = 20
+2026-06-08 12:44:27 | INFO | gold.build_gold |   Airlines                  = 24
+2026-06-08 12:44:27 | INFO | gold.build_gold |   On Ground                 = 6
+2026-06-08 12:44:27 | INFO | gold.build_gold |   Airborne                  = 131
+2026-06-08 12:44:27 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 12:44:27 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 12:44:27 | INFO | gold.build_gold | hourly_flight_trend: 4 rows
+2026-06-08 12:44:27 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 12:44:27 | INFO | __main__ | Pipeline complete in 3.9s
+2026-06-08 12:44:27 | INFO | __main__ | Cycle 7 ✓ — sleeping 60s
+2026-06-08 12:45:27 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 8
+════════════════════════════════════════
+2026-06-08 12:45:27 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 12:45:27 | INFO | __main__ | Pipeline started at 2026-06-08T07:15:27.631570+00:00
+2026-06-08 12:45:27 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 12:45:28 | INFO | ingestion.ingest | [hyderabad] Fetched 46 aircraft
+2026-06-08 12:45:28 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_071528.json
+2026-06-08 12:45:29 | INFO | ingestion.ingest | [delhi] Fetched 14 aircraft
+2026-06-08 12:45:29 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_071529.json
+2026-06-08 12:45:29 | INFO | ingestion.ingest | [mumbai] Fetched 40 aircraft
+2026-06-08 12:45:29 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_071529.json
+2026-06-08 12:45:30 | INFO | ingestion.ingest | [bangalore] Fetched 29 aircraft
+2026-06-08 12:45:30 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_071530.json
+2026-06-08 12:45:30 | INFO | __main__ | Ingested: {'hyderabad': 46, 'delhi': 14, 'mumbai': 40, 'bangalore': 29}
+2026-06-08 12:45:30 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 12:45:30 | INFO | bronze.load_bronze | Found 32 raw files to process
+2026-06-08 12:45:30 | INFO | bronze.load_bronze | Loaded    29 rows ← bangalore_20260608_071530.json
+2026-06-08 12:45:30 | INFO | bronze.load_bronze | Loaded    14 rows ← delhi_20260608_071529.json
+2026-06-08 12:45:30 | INFO | bronze.load_bronze | Loaded    46 rows ← hyderabad_20260608_071528.json
+2026-06-08 12:45:30 | INFO | bronze.load_bronze | Loaded    40 rows ← mumbai_20260608_071529.json
+2026-06-08 12:45:30 | INFO | bronze.load_bronze | Bronze load complete | 129 total rows inserted
+2026-06-08 12:45:30 | INFO | __main__ | Bronze rows: 129
+2026-06-08 12:45:30 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 12:45:30 | INFO | silver.process_silver | flight_clean: 957 rows (was 828)
+2026-06-08 12:45:31 | INFO | silver.process_silver | CDC: 5 new, 102 changed, 36 unchanged
+2026-06-08 12:45:31 | INFO | silver.process_silver | SCD2: 108 new rows | 103 records closed | flight_current has 143 rows
+2026-06-08 12:45:31 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 12:45:31 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 12:45:31 | INFO | gold.build_gold | aircraft_dimension: 143 rows
+2026-06-08 12:45:31 | INFO | gold.build_gold | airline_dimension: 25 rows
+2026-06-08 12:45:31 | INFO | gold.build_gold | flight_metrics: 32 rows
+2026-06-08 12:45:31 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 12:45:31 | INFO | gold.build_gold |   Active Flights            = 143
+2026-06-08 12:45:31 | INFO | gold.build_gold |   Avg Altitude (ft)         = 24372.0
+2026-06-08 12:45:31 | INFO | gold.build_gold |   Avg Speed (knots)         = 372.0
+2026-06-08 12:45:31 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 12:45:31 | INFO | gold.build_gold |   Aircraft Types            = 20
+2026-06-08 12:45:31 | INFO | gold.build_gold |   Airlines                  = 25
+2026-06-08 12:45:31 | INFO | gold.build_gold |   On Ground                 = 7
+2026-06-08 12:45:31 | INFO | gold.build_gold |   Airborne                  = 134
+2026-06-08 12:45:31 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 12:45:31 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 12:45:31 | INFO | gold.build_gold | hourly_flight_trend: 4 rows
+2026-06-08 12:45:31 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 12:45:31 | INFO | __main__ | Pipeline complete in 3.7s
+2026-06-08 12:45:31 | INFO | __main__ | Cycle 8 ✓ — sleeping 60s
+2026-06-08 13:20:38 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 9
+════════════════════════════════════════
+2026-06-08 13:20:38 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 13:20:38 | INFO | __main__ | Pipeline started at 2026-06-08T07:50:38.821903+00:00
+2026-06-08 13:20:38 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 13:20:41 | INFO | ingestion.ingest | [hyderabad] Fetched 46 aircraft
+2026-06-08 13:20:41 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_075041.json
+2026-06-08 13:20:42 | INFO | ingestion.ingest | [delhi] Fetched 14 aircraft
+2026-06-08 13:20:42 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_075042.json
+2026-06-08 13:20:45 | INFO | ingestion.ingest | [mumbai] Fetched 39 aircraft
+2026-06-08 13:20:45 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_075045.json
+2026-06-08 13:20:46 | INFO | ingestion.ingest | [bangalore] Fetched 34 aircraft
+2026-06-08 13:20:46 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_075046.json
+2026-06-08 13:20:46 | INFO | __main__ | Ingested: {'hyderabad': 46, 'delhi': 14, 'mumbai': 39, 'bangalore': 34}
+2026-06-08 13:20:46 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 13:20:46 | INFO | bronze.load_bronze | Found 36 raw files to process
+2026-06-08 13:20:46 | INFO | bronze.load_bronze | Loaded    34 rows ← bangalore_20260608_075046.json
+2026-06-08 13:20:46 | INFO | bronze.load_bronze | Loaded    14 rows ← delhi_20260608_075042.json
+2026-06-08 13:20:46 | INFO | bronze.load_bronze | Loaded    46 rows ← hyderabad_20260608_075041.json
+2026-06-08 13:20:46 | INFO | bronze.load_bronze | Loaded    39 rows ← mumbai_20260608_075045.json
+2026-06-08 13:20:46 | INFO | bronze.load_bronze | Bronze load complete | 133 total rows inserted
+2026-06-08 13:20:46 | INFO | __main__ | Bronze rows: 133
+2026-06-08 13:20:46 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 13:20:46 | INFO | silver.process_silver | flight_clean: 1090 rows (was 957)
+2026-06-08 13:20:47 | INFO | silver.process_silver | CDC: 81 new, 25 changed, 118 unchanged
+2026-06-08 13:20:47 | INFO | silver.process_silver | SCD2: 106 new rows | 25 records closed | flight_current has 224 rows
+2026-06-08 13:20:47 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 13:20:47 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 13:20:47 | INFO | gold.build_gold | aircraft_dimension: 224 rows
+2026-06-08 13:20:47 | INFO | gold.build_gold | airline_dimension: 31 rows
+2026-06-08 13:20:47 | INFO | gold.build_gold | flight_metrics: 36 rows
+2026-06-08 13:20:47 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 13:20:47 | INFO | gold.build_gold |   Active Flights            = 224
+2026-06-08 13:20:47 | INFO | gold.build_gold |   Avg Altitude (ft)         = 22628.0
+2026-06-08 13:20:47 | INFO | gold.build_gold |   Avg Speed (knots)         = 364.0
+2026-06-08 13:20:47 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 13:20:47 | INFO | gold.build_gold |   Aircraft Types            = 26
+2026-06-08 13:20:47 | INFO | gold.build_gold |   Airlines                  = 31
+2026-06-08 13:20:47 | INFO | gold.build_gold |   On Ground                 = 6
+2026-06-08 13:20:47 | INFO | gold.build_gold |   Airborne                  = 215
+2026-06-08 13:20:47 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 13:20:47 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 13:20:47 | INFO | gold.build_gold | hourly_flight_trend: 8 rows
+2026-06-08 13:20:47 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 13:20:47 | INFO | __main__ | Pipeline complete in 8.7s
+2026-06-08 13:20:47 | INFO | __main__ | Cycle 9 ✓ — sleeping 60s
+2026-06-08 13:21:47 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 10
+════════════════════════════════════════
+2026-06-08 13:21:47 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 13:21:47 | INFO | __main__ | Pipeline started at 2026-06-08T07:51:47.566351+00:00
+2026-06-08 13:21:47 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 13:21:48 | INFO | ingestion.ingest | [hyderabad] Fetched 45 aircraft
+2026-06-08 13:21:48 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_075148.json
+2026-06-08 13:21:49 | INFO | ingestion.ingest | [delhi] Fetched 17 aircraft
+2026-06-08 13:21:49 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_075149.json
+2026-06-08 13:21:49 | INFO | ingestion.ingest | [mumbai] Fetched 39 aircraft
+2026-06-08 13:21:49 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_075149.json
+2026-06-08 13:21:50 | INFO | ingestion.ingest | [bangalore] Fetched 33 aircraft
+2026-06-08 13:21:50 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_075150.json
+2026-06-08 13:21:50 | INFO | __main__ | Ingested: {'hyderabad': 45, 'delhi': 17, 'mumbai': 39, 'bangalore': 33}
+2026-06-08 13:21:50 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 13:21:50 | INFO | bronze.load_bronze | Found 40 raw files to process
+2026-06-08 13:21:50 | INFO | bronze.load_bronze | Loaded    33 rows ← bangalore_20260608_075150.json
+2026-06-08 13:21:50 | INFO | bronze.load_bronze | Loaded    17 rows ← delhi_20260608_075149.json
+2026-06-08 13:21:50 | INFO | bronze.load_bronze | Loaded    45 rows ← hyderabad_20260608_075148.json
+2026-06-08 13:21:50 | INFO | bronze.load_bronze | Loaded    39 rows ← mumbai_20260608_075149.json
+2026-06-08 13:21:50 | INFO | bronze.load_bronze | Bronze load complete | 134 total rows inserted
+2026-06-08 13:21:50 | INFO | __main__ | Bronze rows: 134
+2026-06-08 13:21:50 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 13:21:50 | INFO | silver.process_silver | flight_clean: 1224 rows (was 1090)
+2026-06-08 13:21:51 | INFO | silver.process_silver | CDC: 9 new, 98 changed, 126 unchanged
+2026-06-08 13:21:51 | INFO | silver.process_silver | SCD2: 107 new rows | 98 records closed | flight_current has 233 rows
+2026-06-08 13:21:51 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 13:21:51 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 13:21:51 | INFO | gold.build_gold | aircraft_dimension: 233 rows
+2026-06-08 13:21:51 | INFO | gold.build_gold | airline_dimension: 31 rows
+2026-06-08 13:21:51 | INFO | gold.build_gold | flight_metrics: 40 rows
+2026-06-08 13:21:51 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 13:21:51 | INFO | gold.build_gold |   Active Flights            = 233
+2026-06-08 13:21:51 | INFO | gold.build_gold |   Avg Altitude (ft)         = 22476.0
+2026-06-08 13:21:51 | INFO | gold.build_gold |   Avg Speed (knots)         = 361.0
+2026-06-08 13:21:51 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 13:21:51 | INFO | gold.build_gold |   Aircraft Types            = 28
+2026-06-08 13:21:51 | INFO | gold.build_gold |   Airlines                  = 31
+2026-06-08 13:21:51 | INFO | gold.build_gold |   On Ground                 = 6
+2026-06-08 13:21:51 | INFO | gold.build_gold |   Airborne                  = 225
+2026-06-08 13:21:51 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 13:21:51 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 13:21:51 | INFO | gold.build_gold | hourly_flight_trend: 8 rows
+2026-06-08 13:21:51 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 13:21:51 | INFO | __main__ | Pipeline complete in 3.8s
+2026-06-08 13:21:51 | INFO | __main__ | Cycle 10 ✓ — sleeping 60s
+2026-06-08 13:22:51 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 11
+════════════════════════════════════════
+2026-06-08 13:22:51 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 13:22:51 | INFO | __main__ | Pipeline started at 2026-06-08T07:52:51.351505+00:00
+2026-06-08 13:22:51 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 13:22:52 | INFO | ingestion.ingest | [hyderabad] Fetched 48 aircraft
+2026-06-08 13:22:52 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_075252.json
+2026-06-08 13:22:52 | INFO | ingestion.ingest | [delhi] Fetched 18 aircraft
+2026-06-08 13:22:52 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_075252.json
+2026-06-08 13:22:53 | INFO | ingestion.ingest | [mumbai] Fetched 38 aircraft
+2026-06-08 13:22:53 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_075253.json
+2026-06-08 13:22:54 | INFO | ingestion.ingest | [bangalore] Fetched 31 aircraft
+2026-06-08 13:22:54 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_075254.json
+2026-06-08 13:22:54 | INFO | __main__ | Ingested: {'hyderabad': 48, 'delhi': 18, 'mumbai': 38, 'bangalore': 31}
+2026-06-08 13:22:54 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 13:22:54 | INFO | bronze.load_bronze | Found 44 raw files to process
+2026-06-08 13:22:54 | INFO | bronze.load_bronze | Loaded    31 rows ← bangalore_20260608_075254.json
+2026-06-08 13:22:54 | INFO | bronze.load_bronze | Loaded    18 rows ← delhi_20260608_075252.json
+2026-06-08 13:22:54 | INFO | bronze.load_bronze | Loaded    48 rows ← hyderabad_20260608_075252.json
+2026-06-08 13:22:54 | INFO | bronze.load_bronze | Loaded    38 rows ← mumbai_20260608_075253.json
+2026-06-08 13:22:54 | INFO | bronze.load_bronze | Bronze load complete | 135 total rows inserted
+2026-06-08 13:22:54 | INFO | __main__ | Bronze rows: 135
+2026-06-08 13:22:54 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 13:22:54 | INFO | silver.process_silver | flight_clean: 1359 rows (was 1224)
+2026-06-08 13:22:54 | INFO | silver.process_silver | CDC: 6 new, 101 changed, 132 unchanged
+2026-06-08 13:22:54 | INFO | silver.process_silver | SCD2: 107 new rows | 101 records closed | flight_current has 239 rows
+2026-06-08 13:22:54 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 13:22:54 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 13:22:54 | INFO | gold.build_gold | aircraft_dimension: 239 rows
+2026-06-08 13:22:54 | INFO | gold.build_gold | airline_dimension: 31 rows
+2026-06-08 13:22:54 | INFO | gold.build_gold | flight_metrics: 44 rows
+2026-06-08 13:22:54 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 13:22:54 | INFO | gold.build_gold |   Active Flights            = 239
+2026-06-08 13:22:54 | INFO | gold.build_gold |   Avg Altitude (ft)         = 22405.0
+2026-06-08 13:22:54 | INFO | gold.build_gold |   Avg Speed (knots)         = 362.0
+2026-06-08 13:22:54 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 13:22:54 | INFO | gold.build_gold |   Aircraft Types            = 28
+2026-06-08 13:22:54 | INFO | gold.build_gold |   Airlines                  = 31
+2026-06-08 13:22:54 | INFO | gold.build_gold |   On Ground                 = 6
+2026-06-08 13:22:54 | INFO | gold.build_gold |   Airborne                  = 231
+2026-06-08 13:22:54 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 13:22:54 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 13:22:54 | INFO | gold.build_gold | hourly_flight_trend: 8 rows
+2026-06-08 13:22:54 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 13:22:54 | INFO | __main__ | Pipeline complete in 3.5s
+2026-06-08 13:22:54 | INFO | __main__ | Cycle 11 ✓ — sleeping 60s
+2026-06-08 13:23:54 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 12
+════════════════════════════════════════
+2026-06-08 13:23:54 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 13:23:54 | INFO | __main__ | Pipeline started at 2026-06-08T07:53:54.866176+00:00
+2026-06-08 13:23:54 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 13:23:55 | INFO | ingestion.ingest | [hyderabad] Fetched 49 aircraft
+2026-06-08 13:23:55 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_075355.json
+2026-06-08 13:23:56 | INFO | ingestion.ingest | [delhi] Fetched 17 aircraft
+2026-06-08 13:23:56 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_075356.json
+2026-06-08 13:23:57 | INFO | ingestion.ingest | [mumbai] Fetched 40 aircraft
+2026-06-08 13:23:57 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_075357.json
+2026-06-08 13:23:57 | INFO | ingestion.ingest | [bangalore] Fetched 32 aircraft
+2026-06-08 13:23:57 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_075357.json
+2026-06-08 13:23:57 | INFO | __main__ | Ingested: {'hyderabad': 49, 'delhi': 17, 'mumbai': 40, 'bangalore': 32}
+2026-06-08 13:23:57 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 13:23:58 | INFO | bronze.load_bronze | Found 48 raw files to process
+2026-06-08 13:23:58 | INFO | bronze.load_bronze | Loaded    32 rows ← bangalore_20260608_075357.json
+2026-06-08 13:23:58 | INFO | bronze.load_bronze | Loaded    17 rows ← delhi_20260608_075356.json
+2026-06-08 13:23:58 | INFO | bronze.load_bronze | Loaded    49 rows ← hyderabad_20260608_075355.json
+2026-06-08 13:23:58 | INFO | bronze.load_bronze | Loaded    40 rows ← mumbai_20260608_075357.json
+2026-06-08 13:23:58 | INFO | bronze.load_bronze | Bronze load complete | 138 total rows inserted
+2026-06-08 13:23:58 | INFO | __main__ | Bronze rows: 138
+2026-06-08 13:23:58 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 13:23:58 | INFO | silver.process_silver | flight_clean: 1497 rows (was 1359)
+2026-06-08 13:23:58 | INFO | silver.process_silver | CDC: 4 new, 107 changed, 132 unchanged
+2026-06-08 13:23:58 | INFO | silver.process_silver | SCD2: 111 new rows | 107 records closed | flight_current has 243 rows
+2026-06-08 13:23:58 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 13:23:58 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 13:23:58 | INFO | gold.build_gold | aircraft_dimension: 243 rows
+2026-06-08 13:23:58 | INFO | gold.build_gold | airline_dimension: 31 rows
+2026-06-08 13:23:58 | INFO | gold.build_gold | flight_metrics: 48 rows
+2026-06-08 13:23:58 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 13:23:58 | INFO | gold.build_gold |   Active Flights            = 243
+2026-06-08 13:23:58 | INFO | gold.build_gold |   Avg Altitude (ft)         = 22270.0
+2026-06-08 13:23:58 | INFO | gold.build_gold |   Avg Speed (knots)         = 360.0
+2026-06-08 13:23:58 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 13:23:58 | INFO | gold.build_gold |   Aircraft Types            = 28
+2026-06-08 13:23:58 | INFO | gold.build_gold |   Airlines                  = 31
+2026-06-08 13:23:58 | INFO | gold.build_gold |   On Ground                 = 7
+2026-06-08 13:23:58 | INFO | gold.build_gold |   Airborne                  = 234
+2026-06-08 13:23:58 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 13:23:58 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 13:23:58 | INFO | gold.build_gold | hourly_flight_trend: 8 rows
+2026-06-08 13:23:58 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 13:23:58 | INFO | __main__ | Pipeline complete in 3.8s
+2026-06-08 13:23:58 | INFO | __main__ | Cycle 12 ✓ — sleeping 60s
+2026-06-08 13:24:58 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 13
+════════════════════════════════════════
+2026-06-08 13:24:58 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 13:24:58 | INFO | __main__ | Pipeline started at 2026-06-08T07:54:58.619810+00:00
+2026-06-08 13:24:58 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 13:24:59 | INFO | ingestion.ingest | [hyderabad] Fetched 46 aircraft
+2026-06-08 13:24:59 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_075459.json
+2026-06-08 13:25:00 | INFO | ingestion.ingest | [delhi] Fetched 15 aircraft
+2026-06-08 13:25:00 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_075500.json
+2026-06-08 13:25:00 | INFO | ingestion.ingest | [mumbai] Fetched 34 aircraft
+2026-06-08 13:25:00 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_075500.json
+2026-06-08 13:25:01 | INFO | ingestion.ingest | [bangalore] Fetched 32 aircraft
+2026-06-08 13:25:01 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_075501.json
+2026-06-08 13:25:01 | INFO | __main__ | Ingested: {'hyderabad': 46, 'delhi': 15, 'mumbai': 34, 'bangalore': 32}
+2026-06-08 13:25:01 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 13:25:01 | INFO | bronze.load_bronze | Found 52 raw files to process
+2026-06-08 13:25:01 | INFO | bronze.load_bronze | Loaded    32 rows ← bangalore_20260608_075501.json
+2026-06-08 13:25:01 | INFO | bronze.load_bronze | Loaded    15 rows ← delhi_20260608_075500.json
+2026-06-08 13:25:01 | INFO | bronze.load_bronze | Loaded    46 rows ← hyderabad_20260608_075459.json
+2026-06-08 13:25:01 | INFO | bronze.load_bronze | Loaded    34 rows ← mumbai_20260608_075500.json
+2026-06-08 13:25:01 | INFO | bronze.load_bronze | Bronze load complete | 127 total rows inserted
+2026-06-08 13:25:01 | INFO | __main__ | Bronze rows: 127
+2026-06-08 13:25:01 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 13:25:01 | INFO | silver.process_silver | flight_clean: 1624 rows (was 1497)
+2026-06-08 13:25:01 | INFO | silver.process_silver | CDC: 4 new, 99 changed, 144 unchanged
+2026-06-08 13:25:01 | INFO | silver.process_silver | SCD2: 103 new rows | 99 records closed | flight_current has 247 rows
+2026-06-08 13:25:01 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 13:25:01 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 13:25:01 | INFO | gold.build_gold | aircraft_dimension: 247 rows
+2026-06-08 13:25:01 | INFO | gold.build_gold | airline_dimension: 31 rows
+2026-06-08 13:25:01 | INFO | gold.build_gold | flight_metrics: 52 rows
+2026-06-08 13:25:01 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 13:25:01 | INFO | gold.build_gold |   Active Flights            = 247
+2026-06-08 13:25:01 | INFO | gold.build_gold |   Avg Altitude (ft)         = 22046.0
+2026-06-08 13:25:01 | INFO | gold.build_gold |   Avg Speed (knots)         = 357.0
+2026-06-08 13:25:01 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 13:25:01 | INFO | gold.build_gold |   Aircraft Types            = 28
+2026-06-08 13:25:01 | INFO | gold.build_gold |   Airlines                  = 31
+2026-06-08 13:25:01 | INFO | gold.build_gold |   On Ground                 = 8
+2026-06-08 13:25:01 | INFO | gold.build_gold |   Airborne                  = 237
+2026-06-08 13:25:01 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 13:25:01 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 13:25:01 | INFO | gold.build_gold | hourly_flight_trend: 8 rows
+2026-06-08 13:25:02 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 13:25:02 | INFO | __main__ | Pipeline complete in 3.4s
+2026-06-08 13:25:02 | INFO | __main__ | Cycle 13 ✓ — sleeping 60s
+2026-06-08 13:26:02 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 14
+════════════════════════════════════════
+2026-06-08 13:26:02 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 13:26:02 | INFO | __main__ | Pipeline started at 2026-06-08T07:56:02.032478+00:00
+2026-06-08 13:26:02 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 13:26:02 | INFO | ingestion.ingest | [hyderabad] Fetched 47 aircraft
+2026-06-08 13:26:02 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_075602.json
+2026-06-08 13:26:03 | INFO | ingestion.ingest | [delhi] Fetched 17 aircraft
+2026-06-08 13:26:03 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_075603.json
+2026-06-08 13:26:04 | INFO | ingestion.ingest | [mumbai] Fetched 34 aircraft
+2026-06-08 13:26:04 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_075604.json
+2026-06-08 13:26:04 | INFO | ingestion.ingest | [bangalore] Fetched 34 aircraft
+2026-06-08 13:26:04 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_075604.json
+2026-06-08 13:26:04 | INFO | __main__ | Ingested: {'hyderabad': 47, 'delhi': 17, 'mumbai': 34, 'bangalore': 34}
+2026-06-08 13:26:04 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 13:26:04 | INFO | bronze.load_bronze | Found 56 raw files to process
+2026-06-08 13:26:05 | INFO | bronze.load_bronze | Loaded    34 rows ← bangalore_20260608_075604.json
+2026-06-08 13:26:05 | INFO | bronze.load_bronze | Loaded    17 rows ← delhi_20260608_075603.json
+2026-06-08 13:26:05 | INFO | bronze.load_bronze | Loaded    47 rows ← hyderabad_20260608_075602.json
+2026-06-08 13:26:05 | INFO | bronze.load_bronze | Loaded    34 rows ← mumbai_20260608_075604.json
+2026-06-08 13:26:05 | INFO | bronze.load_bronze | Bronze load complete | 132 total rows inserted
+2026-06-08 13:26:05 | INFO | __main__ | Bronze rows: 132
+2026-06-08 13:26:05 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 13:26:05 | INFO | silver.process_silver | flight_clean: 1756 rows (was 1624)
+2026-06-08 13:26:05 | INFO | silver.process_silver | CDC: 6 new, 100 changed, 147 unchanged
+2026-06-08 13:26:05 | INFO | silver.process_silver | SCD2: 107 new rows | 101 records closed | flight_current has 253 rows
+2026-06-08 13:26:05 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 13:26:05 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 13:26:05 | INFO | gold.build_gold | aircraft_dimension: 253 rows
+2026-06-08 13:26:05 | INFO | gold.build_gold | airline_dimension: 32 rows
+2026-06-08 13:26:05 | INFO | gold.build_gold | flight_metrics: 56 rows
+2026-06-08 13:26:05 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 13:26:05 | INFO | gold.build_gold |   Active Flights            = 253
+2026-06-08 13:26:05 | INFO | gold.build_gold |   Avg Altitude (ft)         = 21885.0
+2026-06-08 13:26:05 | INFO | gold.build_gold |   Avg Speed (knots)         = 356.0
+2026-06-08 13:26:05 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 13:26:05 | INFO | gold.build_gold |   Aircraft Types            = 28
+2026-06-08 13:26:05 | INFO | gold.build_gold |   Airlines                  = 32
+2026-06-08 13:26:05 | INFO | gold.build_gold |   On Ground                 = 9
+2026-06-08 13:26:05 | INFO | gold.build_gold |   Airborne                  = 242
+2026-06-08 13:26:05 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 13:26:05 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 13:26:05 | INFO | gold.build_gold | hourly_flight_trend: 8 rows
+2026-06-08 13:26:05 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 13:26:05 | INFO | __main__ | Pipeline complete in 3.6s
+2026-06-08 13:26:05 | INFO | __main__ | Cycle 14 ✓ — sleeping 60s
+2026-06-08 13:27:05 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 15
+════════════════════════════════════════
+2026-06-08 13:27:05 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 13:27:05 | INFO | __main__ | Pipeline started at 2026-06-08T07:57:05.616455+00:00
+2026-06-08 13:27:05 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 13:27:07 | INFO | ingestion.ingest | [hyderabad] Fetched 45 aircraft
+2026-06-08 13:27:07 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_075707.json
+2026-06-08 13:27:09 | INFO | ingestion.ingest | [delhi] Fetched 17 aircraft
+2026-06-08 13:27:09 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_075709.json
+2026-06-08 13:27:10 | INFO | ingestion.ingest | [mumbai] Fetched 39 aircraft
+2026-06-08 13:27:10 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_075710.json
+2026-06-08 13:27:11 | INFO | ingestion.ingest | [bangalore] Fetched 29 aircraft
+2026-06-08 13:27:11 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_075711.json
+2026-06-08 13:27:11 | INFO | __main__ | Ingested: {'hyderabad': 45, 'delhi': 17, 'mumbai': 39, 'bangalore': 29}
+2026-06-08 13:27:11 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 13:27:11 | INFO | bronze.load_bronze | Found 60 raw files to process
+2026-06-08 13:27:11 | INFO | bronze.load_bronze | Loaded    29 rows ← bangalore_20260608_075711.json
+2026-06-08 13:27:11 | INFO | bronze.load_bronze | Loaded    17 rows ← delhi_20260608_075709.json
+2026-06-08 13:27:11 | INFO | bronze.load_bronze | Loaded    45 rows ← hyderabad_20260608_075707.json
+2026-06-08 13:27:11 | INFO | bronze.load_bronze | Loaded    39 rows ← mumbai_20260608_075710.json
+2026-06-08 13:27:11 | INFO | bronze.load_bronze | Bronze load complete | 130 total rows inserted
+2026-06-08 13:27:11 | INFO | __main__ | Bronze rows: 130
+2026-06-08 13:27:11 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 13:27:11 | INFO | silver.process_silver | flight_clean: 1886 rows (was 1756)
+2026-06-08 13:27:11 | INFO | silver.process_silver | CDC: 8 new, 100 changed, 153 unchanged
+2026-06-08 13:27:11 | INFO | silver.process_silver | SCD2: 108 new rows | 100 records closed | flight_current has 261 rows
+2026-06-08 13:27:11 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 13:27:11 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 13:27:11 | INFO | gold.build_gold | aircraft_dimension: 261 rows
+2026-06-08 13:27:11 | INFO | gold.build_gold | airline_dimension: 32 rows
+2026-06-08 13:27:11 | INFO | gold.build_gold | flight_metrics: 60 rows
+2026-06-08 13:27:11 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 13:27:11 | INFO | gold.build_gold |   Active Flights            = 261
+2026-06-08 13:27:11 | INFO | gold.build_gold |   Avg Altitude (ft)         = 21817.0
+2026-06-08 13:27:11 | INFO | gold.build_gold |   Avg Speed (knots)         = 356.0
+2026-06-08 13:27:11 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 13:27:11 | INFO | gold.build_gold |   Aircraft Types            = 29
+2026-06-08 13:27:11 | INFO | gold.build_gold |   Airlines                  = 32
+2026-06-08 13:27:11 | INFO | gold.build_gold |   On Ground                 = 11
+2026-06-08 13:27:11 | INFO | gold.build_gold |   Airborne                  = 248
+2026-06-08 13:27:11 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 13:27:11 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 13:27:11 | INFO | gold.build_gold | hourly_flight_trend: 8 rows
+2026-06-08 13:27:11 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 13:27:11 | INFO | __main__ | Pipeline complete in 6.4s
+2026-06-08 13:27:11 | INFO | __main__ | Cycle 15 ✓ — sleeping 60s
+2026-06-08 14:15:40 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 16
+════════════════════════════════════════
+2026-06-08 14:15:40 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 14:15:40 | INFO | __main__ | Pipeline started at 2026-06-08T08:45:40.663029+00:00
+2026-06-08 14:15:40 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 14:15:43 | INFO | ingestion.ingest | [hyderabad] Fetched 34 aircraft
+2026-06-08 14:15:44 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_084543.json
+2026-06-08 14:15:45 | INFO | ingestion.ingest | [delhi] Fetched 14 aircraft
+2026-06-08 14:15:45 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_084545.json
+2026-06-08 14:15:46 | INFO | ingestion.ingest | [mumbai] Fetched 43 aircraft
+2026-06-08 14:15:46 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_084546.json
+2026-06-08 14:15:47 | INFO | ingestion.ingest | [bangalore] Fetched 26 aircraft
+2026-06-08 14:15:47 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_084547.json
+2026-06-08 14:15:47 | INFO | __main__ | Ingested: {'hyderabad': 34, 'delhi': 14, 'mumbai': 43, 'bangalore': 26}
+2026-06-08 14:15:47 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 14:15:47 | INFO | bronze.load_bronze | Found 64 raw files to process
+2026-06-08 14:15:47 | INFO | bronze.load_bronze | Loaded    26 rows ← bangalore_20260608_084547.json
+2026-06-08 14:15:47 | INFO | bronze.load_bronze | Loaded    14 rows ← delhi_20260608_084545.json
+2026-06-08 14:15:47 | INFO | bronze.load_bronze | Loaded    34 rows ← hyderabad_20260608_084543.json
+2026-06-08 14:15:47 | INFO | bronze.load_bronze | Loaded    43 rows ← mumbai_20260608_084546.json
+2026-06-08 14:15:47 | INFO | bronze.load_bronze | Bronze load complete | 117 total rows inserted
+2026-06-08 14:15:47 | INFO | __main__ | Bronze rows: 117
+2026-06-08 14:15:47 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 14:15:47 | INFO | silver.process_silver | flight_clean: 2003 rows (was 1886)
+2026-06-08 14:15:47 | INFO | silver.process_silver | CDC: 66 new, 30 changed, 231 unchanged
+2026-06-08 14:15:47 | INFO | silver.process_silver | SCD2: 96 new rows | 30 records closed | flight_current has 327 rows
+2026-06-08 14:15:47 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 14:15:47 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 14:15:47 | INFO | gold.build_gold | aircraft_dimension: 327 rows
+2026-06-08 14:15:47 | INFO | gold.build_gold | airline_dimension: 41 rows
+2026-06-08 14:15:47 | INFO | gold.build_gold | flight_metrics: 64 rows
+2026-06-08 14:15:47 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 14:15:47 | INFO | gold.build_gold |   Active Flights            = 327
+2026-06-08 14:15:47 | INFO | gold.build_gold |   Avg Altitude (ft)         = 23114.0
+2026-06-08 14:15:47 | INFO | gold.build_gold |   Avg Speed (knots)         = 368.0
+2026-06-08 14:15:47 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 14:15:47 | INFO | gold.build_gold |   Aircraft Types            = 31
+2026-06-08 14:15:47 | INFO | gold.build_gold |   Airlines                  = 41
+2026-06-08 14:15:47 | INFO | gold.build_gold |   On Ground                 = 6
+2026-06-08 14:15:47 | INFO | gold.build_gold |   Airborne                  = 320
+2026-06-08 14:15:47 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 14:15:47 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 14:15:47 | INFO | gold.build_gold | hourly_flight_trend: 12 rows
+2026-06-08 14:15:48 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 14:15:48 | INFO | __main__ | Pipeline complete in 7.4s
+2026-06-08 14:15:48 | INFO | __main__ | Cycle 16 ✓ — sleeping 60s
+2026-06-08 14:16:48 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 17
+════════════════════════════════════════
+2026-06-08 14:16:48 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 14:16:48 | INFO | __main__ | Pipeline started at 2026-06-08T08:46:48.055459+00:00
+2026-06-08 14:16:48 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 14:16:48 | INFO | ingestion.ingest | [hyderabad] Fetched 38 aircraft
+2026-06-08 14:16:48 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_084648.json
+2026-06-08 14:16:49 | INFO | ingestion.ingest | [delhi] Fetched 14 aircraft
+2026-06-08 14:16:49 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_084649.json
+2026-06-08 14:16:50 | INFO | ingestion.ingest | [mumbai] Fetched 43 aircraft
+2026-06-08 14:16:50 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_084650.json
+2026-06-08 14:16:51 | INFO | ingestion.ingest | [bangalore] Fetched 30 aircraft
+2026-06-08 14:16:51 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_084651.json
+2026-06-08 14:16:51 | INFO | __main__ | Ingested: {'hyderabad': 38, 'delhi': 14, 'mumbai': 43, 'bangalore': 30}
+2026-06-08 14:16:51 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 14:16:51 | INFO | bronze.load_bronze | Found 68 raw files to process
+2026-06-08 14:16:51 | INFO | bronze.load_bronze | Loaded    30 rows ← bangalore_20260608_084651.json
+2026-06-08 14:16:51 | INFO | bronze.load_bronze | Loaded    14 rows ← delhi_20260608_084649.json
+2026-06-08 14:16:51 | INFO | bronze.load_bronze | Loaded    38 rows ← hyderabad_20260608_084648.json
+2026-06-08 14:16:51 | INFO | bronze.load_bronze | Loaded    43 rows ← mumbai_20260608_084650.json
+2026-06-08 14:16:51 | INFO | bronze.load_bronze | Bronze load complete | 125 total rows inserted
+2026-06-08 14:16:51 | INFO | __main__ | Bronze rows: 125
+2026-06-08 14:16:51 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 14:16:51 | INFO | silver.process_silver | flight_clean: 2128 rows (was 2003)
+2026-06-08 14:16:51 | INFO | silver.process_silver | CDC: 8 new, 92 changed, 235 unchanged
+2026-06-08 14:16:51 | INFO | silver.process_silver | SCD2: 100 new rows | 92 records closed | flight_current has 335 rows
+2026-06-08 14:16:51 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 14:16:51 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 14:16:51 | INFO | gold.build_gold | aircraft_dimension: 335 rows
+2026-06-08 14:16:51 | INFO | gold.build_gold | airline_dimension: 42 rows
+2026-06-08 14:16:51 | INFO | gold.build_gold | flight_metrics: 68 rows
+2026-06-08 14:16:51 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 14:16:51 | INFO | gold.build_gold |   Active Flights            = 335
+2026-06-08 14:16:51 | INFO | gold.build_gold |   Avg Altitude (ft)         = 23020.0
+2026-06-08 14:16:51 | INFO | gold.build_gold |   Avg Speed (knots)         = 366.0
+2026-06-08 14:16:51 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 14:16:51 | INFO | gold.build_gold |   Aircraft Types            = 32
+2026-06-08 14:16:51 | INFO | gold.build_gold |   Airlines                  = 42
+2026-06-08 14:16:51 | INFO | gold.build_gold |   On Ground                 = 6
+2026-06-08 14:16:51 | INFO | gold.build_gold |   Airborne                  = 328
+2026-06-08 14:16:51 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 14:16:51 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 14:16:51 | INFO | gold.build_gold | hourly_flight_trend: 12 rows
+2026-06-08 14:16:51 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 14:16:51 | INFO | __main__ | Pipeline complete in 3.6s
+2026-06-08 14:16:51 | INFO | __main__ | Cycle 17 ✓ — sleeping 60s
+2026-06-08 14:30:04 | INFO | __main__ | Continuous pipeline — interval=60s
+2026-06-08 14:30:04 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 1
+════════════════════════════════════════
+2026-06-08 14:30:04 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 14:30:04 | INFO | __main__ | Pipeline started at 2026-06-08T09:00:04.866925+00:00
+2026-06-08 14:30:04 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 14:30:05 | INFO | ingestion.ingest | [hyderabad] Fetched 42 aircraft
+2026-06-08 14:30:05 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_090005.json
+2026-06-08 14:30:06 | INFO | ingestion.ingest | [delhi] Fetched 15 aircraft
+2026-06-08 14:30:06 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_090006.json
+2026-06-08 14:30:07 | INFO | ingestion.ingest | [mumbai] Fetched 36 aircraft
+2026-06-08 14:30:07 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_090007.json
+2026-06-08 14:30:07 | INFO | ingestion.ingest | [bangalore] Fetched 31 aircraft
+2026-06-08 14:30:07 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_090007.json
+2026-06-08 14:30:07 | INFO | __main__ | Ingested: {'hyderabad': 42, 'delhi': 15, 'mumbai': 36, 'bangalore': 31}
+2026-06-08 14:30:07 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 14:30:07 | INFO | bronze.load_bronze | Found 72 raw files to process
+2026-06-08 14:30:07 | INFO | bronze.load_bronze | Loaded    31 rows ← bangalore_20260608_090007.json
+2026-06-08 14:30:08 | INFO | bronze.load_bronze | Loaded    15 rows ← delhi_20260608_090006.json
+2026-06-08 14:30:08 | INFO | bronze.load_bronze | Loaded    42 rows ← hyderabad_20260608_090005.json
+2026-06-08 14:30:08 | INFO | bronze.load_bronze | Loaded    36 rows ← mumbai_20260608_090007.json
+2026-06-08 14:30:08 | INFO | bronze.load_bronze | Bronze load complete | 124 total rows inserted
+2026-06-08 14:30:08 | INFO | __main__ | Bronze rows: 124
+2026-06-08 14:30:08 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 14:30:08 | INFO | silver.process_silver | flight_clean: 2252 rows (was 2128)
+2026-06-08 14:30:08 | INFO | silver.process_silver | CDC: 28 new, 76 changed, 259 unchanged
+2026-06-08 14:30:08 | INFO | silver.process_silver | SCD2: 104 new rows | 76 records closed | flight_current has 363 rows
+2026-06-08 14:30:10 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 14:30:14 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)
+2026-06-08 14:30:15 | INFO | gold.build_gold | aircraft_dimension: 363 rows
+2026-06-08 14:30:15 | INFO | gold.build_gold | airline_dimension: 45 rows
+2026-06-08 14:30:15 | INFO | gold.build_gold | flight_metrics: 72 rows
+2026-06-08 14:30:15 | INFO | gold.build_gold | flight_kpis: 8 KPIs computed
+2026-06-08 14:30:15 | INFO | gold.build_gold |   Active Flights            = 363
+2026-06-08 14:30:15 | INFO | gold.build_gold |   Avg Altitude (ft)         = 23275.0
+2026-06-08 14:30:15 | INFO | gold.build_gold |   Avg Speed (knots)         = 366.0
+2026-06-08 14:30:15 | INFO | gold.build_gold |   Emergency Squawks         = 0
+2026-06-08 14:30:15 | INFO | gold.build_gold |   Aircraft Types            = 33
+2026-06-08 14:30:15 | INFO | gold.build_gold |   Airlines                  = 45
+2026-06-08 14:30:15 | INFO | gold.build_gold |   On Ground                 = 6
+2026-06-08 14:30:15 | INFO | gold.build_gold |   Airborne                  = 356
+2026-06-08 14:30:15 | INFO | gold.build_gold | region_summary: 4 rows
+2026-06-08 14:30:15 | INFO | gold.build_gold | top_operators: 20 rows
+2026-06-08 14:30:15 | INFO | gold.build_gold | hourly_flight_trend: 12 rows
+2026-06-08 14:30:15 | INFO | gold.build_gold | Gold layer complete
+2026-06-08 14:30:20 | INFO | __main__ | Pipeline complete in 15.4s
+2026-06-08 14:30:26 | INFO | __main__ | Cycle 1 ✓ — sleeping 60s
+2026-06-08 14:31:37 | INFO | __main__ | 
+════════════════════════════════════════
+CYCLE 2
+════════════════════════════════════════
+2026-06-08 14:31:55 | INFO | __main__ | ════════════════════════════════════════
+2026-06-08 14:31:58 | INFO | __main__ | Pipeline started at 2026-06-08T09:01:53.886376+00:00
+2026-06-08 14:31:59 | INFO | __main__ | STEP 1/4 ── Ingestion
+2026-06-08 14:32:57 | INFO | ingestion.ingest | [hyderabad] Fetched 41 aircraft
+2026-06-08 14:33:00 | INFO | ingestion.ingest | [hyderabad] Saved → hyderabad_20260608_090300.json
+2026-06-08 14:33:03 | INFO | ingestion.ingest | [delhi] Fetched 14 aircraft
+2026-06-08 14:33:05 | INFO | ingestion.ingest | [delhi] Saved → delhi_20260608_090305.json
+2026-06-08 14:33:06 | INFO | ingestion.ingest | [mumbai] Fetched 35 aircraft
+2026-06-08 14:33:07 | INFO | ingestion.ingest | [mumbai] Saved → mumbai_20260608_090307.json
+2026-06-08 14:33:08 | INFO | ingestion.ingest | [bangalore] Fetched 32 aircraft
+2026-06-08 14:33:09 | INFO | ingestion.ingest | [bangalore] Saved → bangalore_20260608_090309.json
+2026-06-08 14:33:12 | INFO | __main__ | Ingested: {'hyderabad': 41, 'delhi': 14, 'mumbai': 35, 'bangalore': 32}
+2026-06-08 14:33:13 | INFO | __main__ | STEP 2/4 ── Bronze layer
+2026-06-08 14:33:15 | INFO | bronze.load_bronze | Found 76 raw files to process
+2026-06-08 14:33:15 | INFO | bronze.load_bronze | Loaded    32 rows ← bangalore_20260608_090309.json
+2026-06-08 14:33:15 | INFO | bronze.load_bronze | Loaded    14 rows ← delhi_20260608_090305.json
+2026-06-08 14:33:15 | INFO | bronze.load_bronze | Loaded    41 rows ← hyderabad_20260608_090300.json
+2026-06-08 14:33:15 | INFO | bronze.load_bronze | Loaded    35 rows ← mumbai_20260608_090307.json
+2026-06-08 14:33:15 | INFO | bronze.load_bronze | Bronze load complete | 122 total rows inserted
+2026-06-08 14:33:16 | INFO | __main__ | Bronze rows: 122
+2026-06-08 14:33:17 | INFO | __main__ | STEP 3/4 ── Silver layer (clean + CDC + SCD2)
+2026-06-08 14:34:12 | INFO | silver.process_silver | flight_clean: 2374 rows (was 2252)
+2026-06-08 14:34:13 | INFO | silver.process_silver | CDC: 9 new, 93 changed, 270 unchanged
+2026-06-08 14:35:41 | INFO | silver.process_silver | SCD2: 102 new rows | 93 records closed | flight_current has 372 rows
+2026-06-08 14:35:43 | INFO | silver.process_silver | Silver layer complete
+2026-06-08 14:35:46 | INFO | __main__ | STEP 4/4 ── Gold layer (dimensions + KPIs)

@@ -18,7 +18,7 @@
       "task_key": "Bronze_Layer",
       "run_if": "ALL_SUCCESS",
       "notebook_task": {
-        "notebook_path": "/Workspace/Users/ngayathri929@gmail.com/flight_tracker_project/01_Bronze_ADSB",
+        "notebook_path": "/flight_tracker_project/01_Bronze_ADSB",
         "source": "WORKSPACE"
       },
       "timeout_seconds": 0,
@@ -35,7 +35,7 @@
       ],
       "run_if": "ALL_SUCCESS",
       "notebook_task": {
-        "notebook_path": "/Workspace/Users/ngayathri929@gmail.com/silver",
+        "notebook_path": "/silver",
         "source": "WORKSPACE"
       },
       "timeout_seconds": 0,
@@ -52,7 +52,7 @@
       ],
       "run_if": "ALL_SUCCESS",
       "notebook_task": {
-        "notebook_path": "/Workspace/Users/ngayathri929@gmail.com/New Notebook 2026-06-05 12:47:19",
+        "notebook_path": "/Gold",
         "source": "WORKSPACE"
       },
       "timeout_seconds": 0,
